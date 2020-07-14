@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>KnightLore: Battle for the Islands</title>
+  </head>
+  <body>
+    <canvas id="ctx" width="1580" height="765" style="border:2px solid red"/>
+    <script type="text/javascript">
+      var ctx = document.getElementById('ctx').getContext('2d');
+      var CardHolder = new Image();
+      var background = new Image();
+      var HomeBase = new Image();
+      var Leader = new Image();
+      var Wizard = new Image();
+      var intervalVar, bottomCards = true, topCards = true, leftCards = true, rightCards = true
+          leftCards1 = true, rightCards1 = true;
+      var deployeedListB = [];
+      var deployeedListT = [];
+      var deployeedListL = [];
+      var deployeedListL1 = [];
+      var deployeedListR = [];
+      var deployeedListR1 = [];
+      var deployeedB = {
+        height:70, width:70
+      };
+      var deployeedT = {
+        height:70, width:70
+      };
+      var deployeedL = {
+        height:70, width:70
+      };
+      var deployeedR = {
+        height:70, width:70
+      };
+
+      background.onload = function() {
+        HomeBase.onload = function() {
+          Wizard.onload = function() {
+            Leader.onload = function() {
+              CardHolder.onload = function() {
+                drawObject = function(object,x,y,width,height) {
+                  ctx.drawImage(object,x,y,width,height);
+                }
+                //Draw board
+                drawObject(background,0,0,1580,765);
+                ctx.font = '35px Calibri';
+                ctx.fillText('KnightLore:',710,320);
+                ctx.fillText('Battle         for',680,390);
+                ctx.fillText('the Islands',715,450);
+                //External shapes & path
+                ctx.fillRect(1325,348,70,70);
+                ctx.fillStyle = "black";
+                ctx.fillRect(1360,75,3,610);
+
+                //ctx.strokeRect(1325,348,70,70);
+                ctx.fillRect(1325,120,35,3);
+                ctx.fillRect(1325,165.2,35,3);
+                ctx.fillRect(1325,210,35,3);
+                ctx.fillRect(1325,255,35,3);
+                ctx.fillRect(1325,300,35,3);
+                ctx.fillRect(1325,460,35,3);
+                ctx.fillRect(1325,505,35,3);
+                ctx.fillRect(1325,550,35,3);
+                ctx.fillRect(1325,595,35,3);
+                ctx.fillRect(1325,640,35,3);
+
+                ctx.fillRect(217,75,1145,3);
+                ctx.beginPath();
+                ctx.moveTo(754.4,77);
+                ctx.lineTo(824.5,77);
+                ctx.lineTo(789.5,147);
+                ctx.fill();
+                //ctx.closePath();
+                //ctx.stroke();
+                ctx.fillRect(306.58,77,3,35);
+                ctx.fillRect(396.16,77,3,35);
+                ctx.fillRect(485.74,77,3,35);
+                ctx.fillRect(575.32,77,3,35);
+                ctx.fillRect(664.9,77,3,35);
+                ctx.fillRect(914.06,77,3,35);
+                ctx.fillRect(1003.64,77,3,35);
+                ctx.fillRect(1093.22,77,3,35);
+                ctx.fillRect(1182.8,77,3,35);
+                ctx.fillRect(1272.38,77,3,35);
+
+                ctx.fillRect(217,75,3,610);
+                //ctx.strokeRect(182,348,70,70);
+                ctx.fillRect(182,348,70,70);
+                ctx.fillRect(217,120,35,3);
+                ctx.fillRect(217,165.2,35,3);
+                ctx.fillRect(217,210,35,3);
+                ctx.fillRect(217,255,35,3);
+                ctx.fillRect(217,300,35,3);
+                ctx.fillRect(217,460,35,3);
+                ctx.fillRect(217,505,35,3);
+                ctx.fillRect(217,550,35,3);
+                ctx.fillRect(217,595,35,3);
+                ctx.fillRect(217,640,35,3);
+
+                ctx.fillRect(217,685,1145,3);
+                ctx.beginPath();
+                ctx.moveTo(754.4,685);
+                ctx.lineTo(824.5,685);
+                ctx.lineTo(789.5,615);
+                ctx.fill();
+                //ctx.closePath();
+                //ctx.stroke();
+                ctx.fillRect(306.58,650,3,35);
+                ctx.fillRect(396.16,650,3,35);
+                ctx.fillRect(485.74,650,3,35);
+                ctx.fillRect(575.32,650,3,35);
+                ctx.fillRect(664.9,650,3,35);
+                ctx.fillRect(914.06,650,3,35);
+                ctx.fillRect(1003.64,650,3,35);
+                ctx.fillRect(1093.22,650,3,35);
+                ctx.fillRect(1182.8,650,3,35);
+                ctx.fillRect(1272.38,650,3,35);
+                //Interior shapes and straight paths
+                ctx.fillRect(480,195,70,70);
+                ctx.fillRect(1020,485,70,70);
+                ctx.beginPath();
+                ctx.moveTo(1020,220);
+                ctx.lineTo(1090,220);
+                ctx.lineTo(1055,290);
+                ctx.fill();
+                //ctx.closePath();
+                //ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(480,545);
+                ctx.lineTo(550,545);
+                ctx.lineTo(515,475);
+                ctx.fill();
+                //ctx.closePath();
+                //ctx.stroke();
+                ctx.strokeStyle = "red";
+                ctx.lineWidth = 3
+                ctx.beginPath();
+                ctx.arc(789.5,378,125, 0,2*Math.PI);
+                ctx.stroke();
+
+                ctx.fillRect(514,264,3,214);
+                ctx.fillRect(479,299.66,35,3);
+                ctx.fillRect(479,335.32,35,3);
+                ctx.fillRect(479,370.98,35,3);
+                ctx.fillRect(479,406.64,35,3);
+                ctx.fillRect(479,442.30,35,3);
+
+                ctx.fillRect(1054,290,3,194);
+                ctx.fillRect(1054,322.3,35,3);
+                ctx.fillRect(1054,354.6,35,3);
+                ctx.fillRect(1054,386.9,35,3);
+                ctx.fillRect(1054,419.2,35,3);
+                ctx.fillRect(1054,451.5,35,3);
+
+                ctx.fillRect(537,520,482,3);
+                ctx.fillRect(605.85,520,3,35);
+                ctx.fillRect(674.7,520,3,35);
+                ctx.fillRect(743.55,520,3,35);
+                ctx.fillRect(812.4,520,3,35);
+                ctx.fillRect(881.25,520,3,35);
+                ctx.fillRect(950.1,520,3,35);
+
+                ctx.fillRect(550,235,480,3);
+                ctx.fillRect(618.57,200,3,35);
+                ctx.fillRect(687.14,200,3,35);
+                ctx.fillRect(755.71,200,3,35);
+                ctx.fillRect(824.28,200,3,35);
+                ctx.fillRect(892.85,200,3,35);
+                ctx.fillRect(961.42,200,3,35);
+
+                //Angled lines
+                ctx.rotate(0.491)
+                ctx.fillRect(230,-38,1295,3);
+                ctx.rotate(-0.491)
+                ctx.rotate(-0.487)
+                ctx.fillRect(-125,706,1295,3);
+                ctx.rotate(0.487)
+                ctx.rotate(-0.485);
+                ctx.fillRect(43,448,590,3);
+                ctx.fillRect(402,958,590,3);
+                ctx.rotate(0.485);
+                ctx.rotate(0.485);
+                ctx.fillRect(398,221,590,3);
+                ctx.fillRect(757,-290,590,3);
+                ctx.rotate(-0.485);
+                //ctx.rotate(-0.485);
+                //ctx.fillRect(402,958,590,3);
+                //ctx.rotate(0.485);
+                //ctx.rotate(0.485);
+                //ctx.fillRect(757,-290,590,3);
+                //ctx.rotate(-0.485);
+                //Angled steps left-right bottom-top
+                ctx.rotate(-0.485);
+                ctx.fillRect(1095,688,3,35);
+                ctx.fillRect(1040,688,3,35);
+                ctx.fillRect(985,688,3,35);
+                ctx.fillRect(930,688,3,35);
+                ctx.fillRect(760,688,3,35);
+                ctx.fillRect(720,688,3,35);
+                ctx.fillRect(680,688,3,35);
+                ctx.fillRect(270,688,3,35);
+                ctx.fillRect(310,688,3,35);
+                ctx.fillRect(350,688,3,35);
+                ctx.fillRect(110,688,3,35);
+                ctx.fillRect(55,688,3,35);
+                ctx.fillRect(0,688,3,35);
+                ctx.fillRect(-55,688,3,35);
+                ctx.fillRect(255,432,3,35);
+                ctx.fillRect(200,432,3,35);
+                ctx.fillRect(145,432,3,35);
+                ctx.fillRect(90,432,3,35);
+                ctx.fillRect(420,442,3,15);
+                ctx.fillRect(475,442,3,15);
+                ctx.fillRect(530,442,3,15);
+                ctx.fillRect(585,442,3,15);
+                //ctx.fillRect(420,432,3,35);
+                //ctx.fillRect(475,432,3,35);
+                //ctx.fillRect(530,432,3,35);
+                //ctx.fillRect(585,432,3,35);
+                ctx.fillRect(940,943,3,35);
+                ctx.fillRect(885,943,3,35);
+                ctx.fillRect(830,943,3,35);
+                ctx.fillRect(775,943,3,35);
+                ctx.fillRect(600,943,3,35);
+                ctx.fillRect(555,943,3,35);
+                ctx.fillRect(510,943,3,35);
+                ctx.fillRect(465,943,3,35);
+                ctx.rotate(0.485);
+                //Angled steps left-right top-bottom
+                ctx.rotate(0.485);
+                ctx.fillRect(935,205,3,35);
+                ctx.fillRect(885,205,3,35);
+                ctx.fillRect(835,205,3,35);
+                ctx.fillRect(785,205,3,35);
+                ctx.fillRect(625,205,3,35);
+                ctx.fillRect(570,205,3,35);
+                ctx.fillRect(515,205,3,35);
+                ctx.fillRect(460,205,3,35);
+                ctx.fillRect(300,-52,3,35);
+                ctx.fillRect(355,-52,3,35);
+                ctx.fillRect(410,-52,3,35);
+                ctx.fillRect(465,-52,3,35);
+                ctx.fillRect(638,-52,3,35);
+                ctx.fillRect(678,-52,3,35);
+                ctx.fillRect(718,-52,3,35);
+                ctx.fillRect(1025,-48,3,35);
+                ctx.fillRect(1065,-48,3,35);
+                ctx.fillRect(1105,-48,3,35);
+                ctx.fillRect(1275,-47,3,35);
+                ctx.fillRect(1330,-47,3,35);
+                ctx.fillRect(1385,-47,3,35);
+                ctx.fillRect(1440,-47,3,35);
+                ctx.fillRect(1285,-305,3,35);
+                ctx.fillRect(1230,-305,3,35);
+                ctx.fillRect(1175,-305,3,35);
+                ctx.fillRect(1120,-305,3,35);
+                //ctx.fillRect(975,-305,3,35);
+                //ctx.fillRect(920,-305,3,35);
+                //ctx.fillRect(865,-305,3,35);
+                //ctx.fillRect(810,-305,3,35);
+                ctx.strokeStyle = "black";
+                ctx.lineWidth = 1
+                ctx.strokeRect(975,-296,15,15);
+                ctx.fillRect(920,-296,15,15);
+                ctx.fillRect(865,-296,15,15);
+                ctx.fillRect(810,-296,15,15);
+                ctx.rotate(-0.485);
+
+                updateStart = function() {
+                  if (bottomCards) {
+                    for (var i=0;i<deployeedListB.length;i++) {
+                      drawObject(CardHolder,deployeedListB[i].x,deployeedListB[i].y,deployeedB.width,
+                        deployeedB.height);
+                    }
+                  }
+                  bottomCards = false;
+                  ctx.font = '20px Calibri';
+                  drawObject(HomeBase,0,572,215,192);
+                  drawObject(Wizard,125,572,90,93);
+                  drawObject(Leader,76,496,66,66);
+                  ctx.fillText('Player 4 Left',2,595);
+                  ctx.fillText('Home Base',2,625);
+                  if (topCards) {
+                    for (var i=0;i<deployeedListT.length;i++) {
+                      drawObject(CardHolder,deployeedListT[i].x,deployeedListT[i].y,deployeedT.width,
+                          deployeedT.height);
+                    }
+                  }
+                  topCards = false;
+                  drawObject(HomeBase,0,0,215,192);
+                  drawObject(Wizard,125,0,90,93);
+                  drawObject(Leader,275,2,66,66);
+                  ctx.fillText('Home Base',2,50);
+                  ctx.fillText('Player 1 Top',2,20);
+                  if (leftCards) {
+                    for (var i=0;i<deployeedListL.length;i++) {
+                      drawObject(CardHolder,deployeedListL[i].x,deployeedListL[i].y,deployeedL.width,
+                        deployeedL.height);
+                    }
+                  }
+                  leftCards = false;
+                  drawObject(HomeBase,1364,572,215,192);
+                  drawObject(Wizard,1495,572,90,93);
+                  drawObject(Leader,1235,697,66,66);
+                  ctx.fillText('Player 2 Bottom',1366,595);
+                  ctx.fillText('Home Base',1366,625);
+                  if (rightCards) {
+                    for (var i=0;i<deployeedListR.length;i++) {
+                      drawObject(CardHolder,deployeedListR[i].x,deployeedListR[i].y,deployeedR.width,
+                        deployeedR.height);
+                    }
+                  }
+                  rightCards = false;
+                  drawObject(HomeBase,1364,0,215,192);
+                  drawObject(Wizard,1490,0,90,93);
+                  drawObject(Leader,1435,496,64,68);
+                  ctx.fillText('Player 3 Right',1366,20);
+                  ctx.fillText('Home Base',1366,50);
+                  if (leftCards1) {
+                    for (var i=0;i<deployeedListL1.length;i++) {
+                      drawObject(CardHolder,deployeedListL1[i].x,deployeedListL1[i].y,deployeedL.width,
+                          deployeedL.height);
+                    }
+                  }
+                  leftCards1 = false;
+                  if (rightCards1) {
+                    for (var i=0;i<deployeedListR1.length;i++) {
+                      drawObject(CardHolder,deployeedListR1[i].x,deployeedListR1[i].y,deployeedL.width,
+                        deployeedL.height);
+                    }
+                  }
+                  rightCards1 = false;
+                }
+
+                startGame = function() {
+                  deployeedListB = [];
+                  for (var i=0;i<=9;i++) {
+                    deployeedListB.push({x:i*137,y:695,});
+                  }
+                  deployeedListT = [];
+                  for (var i=0;i<=9;i++) {
+                    deployeedListT.push({x:i*137,y:0,});
+                  }
+                  deployeedListL = [];
+                  for (var i=0;i<=5;i++) {
+                    deployeedListL.push({x:0,y:i*99,});
+                  }
+                  deployeedListR = [];
+                  for (var i=0;i<=5;i++) {
+                    deployeedListR.push({x:1510,y:i*99,});
+                  }
+                  deployeedListR1 = [];
+                  for (var i=0;i<=5;i++) {
+                    deployeedListR1.push({x:1435,y:i*99,});
+                  }
+                  deployeedListL1 = [];
+                  for (var i=0;i<=5;i++) {
+                    deployeedListL1.push({x:75,y:i*99,});
+                  }
+
+                  intervalVar = setInterval(updateStart,10);
+                }
+                startGame();
+              }
+              CardHolder.src = "images/CardHolder.png";
+            }
+            Leader.src = "images/Leader.jpg";
+          }
+          Wizard.src = "images/Wizard.jpg";
+        }
+        HomeBase.src = "images/HomeBase.png";
+      }
+      background.src = "images/background.jpg";
+    </script>
+  </body>
+</html>
